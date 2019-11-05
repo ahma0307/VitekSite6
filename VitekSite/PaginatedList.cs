@@ -15,7 +15,7 @@ namespace VitekSite
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
             PageIndex = pageIndex;
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize);
+            TotalPages = (int)Math.Ceiling(count / (double)pageSize);//hh
 
             this.AddRange(items);
         }
