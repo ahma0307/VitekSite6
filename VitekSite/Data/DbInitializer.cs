@@ -9,7 +9,7 @@ namespace VitekSite.Data
     {
         public static void Initialize(BussinessContext context)
         {
-            context.Database.EnsureCreated();
+            //context.Database.EnsureCreated();
 
             // Look for any students.
             if (context.Customers.Any())

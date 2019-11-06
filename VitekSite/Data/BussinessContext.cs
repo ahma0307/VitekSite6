@@ -17,12 +17,24 @@ namespace VitekSite.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Market> Departments { get; set; }
+        public DbSet<ProductGuide> ProductGuides { get; set; }
+        public DbSet<CountryAssignment> CountryAssignments { get; set; }
+        public DbSet<ProductAssignment> ProductAssignments { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Course");
-            modelBuilder.Entity<Subscription>().ToTable("Enrollment");
-            modelBuilder.Entity<Customer>().ToTable("Student");
+            modelBuilder.Entity<Product>().ToTable("Product");
+            modelBuilder.Entity<Subscription>().ToTable("Subscription");
+            modelBuilder.Entity<Customer>().ToTable("Customer");
+            modelBuilder.Entity<Market>().ToTable("Market");
+            modelBuilder.Entity<ProductGuide>().ToTable("ProductGuide");
+            modelBuilder.Entity<CountryAssignment>().ToTable("CountryAssignment");
+            modelBuilder.Entity<ProductAssignment>().ToTable("ProductAssignment");
+
+            modelBuilder.Entity<ProductAssignment>()
+                .HasKey(p => new { p.ProductID, p.ProductGuideID });
         }
 
         public DbSet<VitekSite.Models.Customer> Customer { get; set; }

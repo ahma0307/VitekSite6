@@ -1,0 +1,31 @@
+﻿@page
+@model VitekSite.Pages.AboutModel
+
+@{
+    ViewData["Title"] = "Customer Body Statistics";
+}
+
+<h2>Customer Body Statistics</h2>
+
+<table>
+    <tr>
+        <th>
+            Subscription Date
+        </th>
+        <th>
+            Customers
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Customers)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubscriptionDate)
+            </td>
+            <td>
+                @item.CustomerCount
+            </td>
+        </tr>
+    }
+</table>
