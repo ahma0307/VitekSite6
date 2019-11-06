@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using VitekSite.Data;
 using VitekSite.Models;
-using System.Collections.Generic
 
 
 
