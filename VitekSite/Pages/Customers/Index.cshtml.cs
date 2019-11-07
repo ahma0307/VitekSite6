@@ -69,7 +69,7 @@ namespace VitekSite.Pages.Customers
                     break;
             }
             int pageSize = 3;
-         Customers = await PaginatedList<Customer>.CreateAsync(
+            Customers = await PaginatedList<Customer>.CreateAsync(
             customersIQ.AsNoTracking(), pageIndex ?? 1, pageSize);
             //Customers = await customersIQ.AsNoTracking().ToListAsync();
         }
