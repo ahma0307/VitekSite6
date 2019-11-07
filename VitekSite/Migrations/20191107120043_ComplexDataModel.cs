@@ -58,11 +58,11 @@ namespace VitekSite.Migrations
                 oldType: "nvarchar(max)",
                 oldNullable: true);
 
-            migrationBuilder.AddColumn<int>(
-                name: "MarketID",
-                table: "Product",
-                nullable: false,
-                defaultValue: 0);
+           // migrationBuilder.AddColumn<int>(
+              //  name: "MarketID",
+                //table: "Product",
+                //nullable: false,
+                //defaultValue: 0);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Customer",
@@ -133,6 +133,15 @@ namespace VitekSite.Migrations
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
+            migrationBuilder.Sql("INSERT INTO dbo.Market (Name, Budget, StartDate) VALUES ('Temp', 0.00, GETDATE())");
+            // Default value for FK points to department created above, with
+            // defaultValue changed to 1 in following AddColumn statement.
+
+            migrationBuilder.AddColumn<int>(
+                name: "MarketID",
+                table: "Product",
+                nullable: false,
+                defaultValue: 1);
 
             migrationBuilder.CreateTable(
                 name: "ProductAssignment",
