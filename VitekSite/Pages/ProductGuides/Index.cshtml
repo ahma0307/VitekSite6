@@ -19,11 +19,9 @@
             <th>Country</th>
             <th>Products</th>
             <th></th>
-        </tr>
-
-       
-        </tr>
+        </tr>      
     </thead>
+
     <tbody>
 
         @foreach (var item in Model.ProductGuideData.ProductGuides)
@@ -68,7 +66,8 @@
         }
 
     </tbody>
-</table>
+  </table>
+
 
 @if (Model.ProductGuideData.Products != null)
 {
@@ -90,7 +89,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <a asp-page="./Index" asp-route-ProductID="@item.ProductID">Select</a>
+                    <a asp-page="./Index" asp-route-productID="@item.ProductID">Select</a>
                 </td>
                 <td>
                     @item.ProductID

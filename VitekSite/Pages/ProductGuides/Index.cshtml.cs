@@ -33,11 +33,11 @@ namespace VitekSite.Pages.ProductGuides
                 .Include(pg => pg.ProductAssignments)
                     .ThenInclude(pg => pg.Product)
                         .ThenInclude(pg => pg.Market)
-                .Include(pg => pg.ProductAssignments)
-                    .ThenInclude(pg => pg.Product)
-                        .ThenInclude(pg => pg.Subscriptions)
-                            .ThenInclude(pg => pg.Customer)
-                .AsNoTracking()
+               // .Include(pg => pg.ProductAssignments)
+                 //   .ThenInclude(pg => pg.Product)
+                   //     .ThenInclude(pg => pg.Subscriptions)
+                     //       .ThenInclude(pg => pg.Customer)
+               // .AsNoTracking()
                 .OrderBy(pg => pg.LastName)
                 .ToListAsync();
 
@@ -52,9 +52,16 @@ namespace VitekSite.Pages.ProductGuides
             if (productID != null)
             {
                 ProductID = productID.Value;
-                var selectedCourse = ProductGuideData.Products
+                
+                var selectedProduct = ProductGuideData.Products
                     .Where(p => p.ProductID == productID).Single();
-                ProductGuideData.Subscriptions = selectedCourse.Subscriptions;
+                await _context.Entry(selectedProduct).Collection(x => x.Subscriptions).LoadAsync();
+                foreach (Subscription subscription in selectedProduct.Subscriptions)
+                {
+                  await _context.Entry(subscription).Reference(x => x.Customer).LoadAsync();
+                }
+                ProductGuideData.Subscriptions = selectedProduct.Subscriptions;
+             
             }
         }
 
@@ -62,7 +69,7 @@ namespace VitekSite.Pages.ProductGuides
 
         //public async Task OnGetAsync()
         //{
-          //  ProductGuide = await _context.ProductGuides.ToListAsync();
+            
         //}
     }
 }
