@@ -45,23 +45,24 @@ namespace VitekSite.Pages.ProductGuides
             {
                 ProductGuideID = id.Value;
                 ProductGuide productGuide = ProductGuideData.ProductGuides
-                    .Where(i => i.ID == id.Value).Single();
-                ProductGuideData.Products = productGuide.ProductAssignments.Select(s => s.Product);
+                    .Where(pg => pg.ID == id.Value).Single();
+                ProductGuideData.Products = productGuide.ProductAssignments.Select(pa => pa.Product);
             }
 
             if (productID != null)
             {
                 ProductID = productID.Value;
                 var selectedCourse = ProductGuideData.Products
-                    .Where(x => x.ProductID == productID).Single();
+                    .Where(p => p.ProductID == productID).Single();
                 ProductGuideData.Subscriptions = selectedCourse.Subscriptions;
             }
-
-        public IList<ProductGuide> ProductGuide { get;set; }
-
-        public async Task OnGetAsync()
-        {
-            ProductGuide = await _context.ProductGuides.ToListAsync();
         }
+
+        //public IList<ProductGuide> ProductGuide { get;set; }
+
+        //public async Task OnGetAsync()
+        //{
+          //  ProductGuide = await _context.ProductGuides.ToListAsync();
+        //}
     }
 }
