@@ -23,7 +23,7 @@ namespace VitekSite.Models
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
 
-        public int? ProjectGuideID { get; set; }
+        public int? ProductGuideID { get; set; }
 
         public ProductGuide Administrator { get; set; }
         public ICollection<Product> Products { get; set; }

@@ -17,7 +17,7 @@ namespace VitekSite.Data
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Market> Departments { get; set; }
+        public DbSet<Market> Markets { get; set; }
         public DbSet<ProductGuide> ProductGuides { get; set; }
         public DbSet<CountryAssignment> CountryAssignments { get; set; }
         public DbSet<ProductAssignment> ProductAssignments { get; set; }
