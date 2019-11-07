@@ -11,11 +11,12 @@ namespace VitekSite.Models
     {
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "Number")]
+        [Display(Name = "Product Number")]
         public int ProductID { get; set; }
         [StringLength(50, MinimumLength = 3)]
         public string ProductName{ get; set; }
         
+
         [Range(0, 99999)]
         public int Price { get; set; }
 
