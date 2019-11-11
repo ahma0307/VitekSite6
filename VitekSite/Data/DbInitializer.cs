@@ -81,14 +81,32 @@ namespace VitekSite.Data
 
             var products = new Product[]
            {
-                new Product{ProductID=1050,ProductName="CD-ORD",Price=100},
-                new Product{ProductID=4022,ProductName="Intowords",Price=100},
-                new Product{ProductID=4041,ProductName="Reading Pen",Price=100},
-                new Product{ProductID=1045,ProductName="CD-ORD and Intowords",Price=150},
-                new Product{ProductID=3141,ProductName="CD-ORD and Reading Pen",Price=150},
-                new Product{ProductID=2021,ProductName="Intowords and Reading Pen",Price=150},
-                new Product{ProductID=2042,ProductName="Intowords",Price=100},
-                new Product{ProductID=2042,ProductName="CD-ORD and Intowords and Reading Pen",Price=175}
+                new Product{ProductID=1050,ProductName="CD-ORD",Price=100,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                 
+
+                new Product{ProductID=4022,ProductName="Intowords",Price=100,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=4041,ProductName="Reading Pen",Price=100,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=1045,ProductName="CD-ORD and Intowords",Price=150,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=3141,ProductName="CD-ORD and Reading Pen",Price=150,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=2021,ProductName="Intowords and Reading Pen",Price=150,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=2042,ProductName="Intowords",Price=100,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
+                new Product{ProductID=2042,ProductName="CD-ORD and Intowords and Reading Pen",Price=175,
+                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                },
            };
             foreach (Product p in products)
             {
@@ -157,40 +175,75 @@ namespace VitekSite.Data
             context.SaveChanges();
             var subscriptions = new Subscription[]
             {
-                new Subscription{CustomerID=1,ProductID=1050,CustomerLoyalty=CustomerLoyalty.A},
-                new Subscription{CustomerID=1,ProductID=4022,CustomerLoyalty=CustomerLoyalty.C},
-                new Subscription{CustomerID=1,ProductID=4041,CustomerLoyalty=CustomerLoyalty.B},
-                new Subscription{CustomerID=2,ProductID=1045,CustomerLoyalty=CustomerLoyalty.B},
-                new Subscription{CustomerID=2,ProductID=3141,CustomerLoyalty=CustomerLoyalty.F},
-                new Subscription{CustomerID=2,ProductID=2021,CustomerLoyalty=CustomerLoyalty.F},
-                new Subscription{CustomerID=3,ProductID=1050},
-                new Subscription{CustomerID=4,ProductID=1050},
-                new Subscription{CustomerID=4,ProductID=4022,CustomerLoyalty=CustomerLoyalty.F},
-                new Subscription{CustomerID=5,ProductID=4041,CustomerLoyalty=CustomerLoyalty.C},
-                new Subscription{CustomerID=6,ProductID=1045},
-                new Subscription{CustomerID=7,ProductID=3141,CustomerLoyalty=CustomerLoyalty.A},
+                new Subscription{
+                   CustomerID = customers.Single(c => c.LastName == "Alexander").ID,
+                    ProductID = products.Single(p => p.ProductName == "Intowords" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.C
+                },
+
+                     new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Alexander").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.C
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Alexander").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                        CustomerID = customers.Single(s => s.LastName == "Alonso").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                        CustomerID = customers.Single(s => s.LastName == "Alonso").ID,
+                    ProductID = products.Single(c => c.ProductName == "Intowords" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Alonso").ID,
+                    ProductID = products.Single(c => c.ProductName == "Intowords" ).ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Anand").ID,
+                    ProductID = products.Single(c => c.ProductName == "Intowords" ).ProductID
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Anand").ID,
+                    ProductID = products.Single(c => c.ProductName == "Intowords").ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Barzdukas").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD").ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Li").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD").ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    },
+                    new Subscription {
+                    CustomerID = customers.Single(s => s.LastName == "Justice").ID,
+                    ProductID = products.Single(c => c.ProductName == "CD-ORD").ProductID,
+                    CustomerLoyalty = CustomerLoyalty.B
+                    }
             };
+
             foreach (Subscription s in subscriptions)
             {
-                var subscriptionInDataBase = context.Subscriptions.Where(
-                    s =>
-                            s.Customer.ID == s.CustomerID &&
-                            s.Product.ProductID == s.ProductID).SingleOrDefault();
-                if (subscriptionInDataBase == null)
+                var enrollmentInDataBase = context.Subscriptions.Where(
+                    c =>
+                            c.Customer.ID == s.CustomerID &&
+                            c.Product.ProductID == s.ProductID).SingleOrDefault();
+                if (enrollmentInDataBase == null)
                 {
                     context.Subscriptions.Add(s);
                 }
-
             }
             context.SaveChanges();
-
-
-
-
-
-
-
-
         }
     }
 }

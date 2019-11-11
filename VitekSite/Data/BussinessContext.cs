@@ -13,10 +13,9 @@ namespace VitekSite.Data
             : base(options)
         {
         }
-
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<Subscription> Subscriptions { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Market> Markets { get; set; }
         public DbSet<ProductGuide> ProductGuides { get; set; }
         public DbSet<CountryAssignment> CountryAssignments { get; set; }
@@ -34,7 +33,7 @@ namespace VitekSite.Data
             modelBuilder.Entity<ProductAssignment>().ToTable("ProductAssignment");
 
             modelBuilder.Entity<ProductAssignment>()
-                .HasKey(p => new { p.ProductID, p.ProductGuideID });
+                .HasKey(pa => new { pa.ProductID, pa.ProductGuideID });
         }
 
         public DbSet<VitekSite.Models.Customer> Customer { get; set; }
