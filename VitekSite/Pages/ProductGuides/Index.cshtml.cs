@@ -52,14 +52,13 @@ namespace VitekSite.Pages.ProductGuides
             if (productID != null)
             {
                 ProductID = productID.Value;
-                
                 var selectedProduct = ProductGuideData.Products
-                    .Where(p => p.ProductID == productID).Single();
+                    .Where(pg => pg.ProductID == productID).Single();
                 await _context.Entry(selectedProduct).Collection(x => x.Subscriptions).LoadAsync();
-                foreach (Subscription subscription in selectedProduct.Subscriptions)
-                {
-                  await _context.Entry(subscription).Reference(x => x.Customer).LoadAsync();
-                }
+              foreach (Subscription subscription in selectedProduct.Subscriptions)
+               {
+                await _context.Entry(subscription).Reference(x => x.Customer).LoadAsync();
+              }
                 ProductGuideData.Subscriptions = selectedProduct.Subscriptions;
              
             }
