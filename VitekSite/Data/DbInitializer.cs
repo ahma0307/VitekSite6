@@ -87,19 +87,19 @@ namespace VitekSite.Data
                  MarketID = markets.Single( s => s.Name == "England").MarketID
                 },
                 new Product{ProductID=4041,ProductName="Reading Pen",Price=100,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
+                 MarketID = markets.Single( s => s.Name == "Danmark").MarketID
                 },
                 new Product{ProductID=1045,ProductName="CD-ORD and Intowords",Price=150,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
+                 MarketID = markets.Single( s => s.Name == "Sverige").MarketID
                 },
                 new Product{ProductID=3141,ProductName="CD-ORD and Reading Pen",Price=150,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
+                 MarketID = markets.Single( s => s.Name == "Norge").MarketID
                 },
                 new Product{ProductID=2021,ProductName="Intowords and Reading Pen",Price=150,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
+                 MarketID = markets.Single( s => s.Name == "Danmark").MarketID
                 },
                 new Product{ProductID=2042,ProductName="Intowords",Price=100,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
+                 MarketID = markets.Single( s => s.Name == "Norge").MarketID
                 },
            };
 
