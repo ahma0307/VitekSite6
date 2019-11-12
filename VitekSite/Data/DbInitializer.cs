@@ -1,5 +1,4 @@
-﻿using VitekSite.Data;
-using VitekSite.Models;
+﻿using VitekSite.Models;
 using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -82,10 +81,8 @@ namespace VitekSite.Data
             var products = new Product[]
            {
                 new Product{ProductID=1050,ProductName="CD-ORD",Price=100,
-                 MarketID = markets.Single( s => s.Name == "england").MarketID
+                 MarketID = markets.Single( s => s.Name == "England").MarketID
                 },
-                 
-
                 new Product{ProductID=4022,ProductName="Intowords",Price=100,
                  MarketID = markets.Single( s => s.Name == "England").MarketID
                 },
@@ -102,9 +99,6 @@ namespace VitekSite.Data
                  MarketID = markets.Single( s => s.Name == "England").MarketID
                 },
                 new Product{ProductID=2042,ProductName="Intowords",Price=100,
-                 MarketID = markets.Single( s => s.Name == "England").MarketID
-                },
-                new Product{ProductID=2042,ProductName="CD-ORD and Intowords and Reading Pen",Price=175,
                  MarketID = markets.Single( s => s.Name == "England").MarketID
                 },
            };
