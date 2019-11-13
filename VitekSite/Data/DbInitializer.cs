@@ -93,13 +93,13 @@ namespace VitekSite.Data
                  MarketID = markets.Single( s => s.Name == "Sverige").MarketID
                 },
                 new Product{ProductID=3141,ProductName="CD-ORD and Reading Pen",Price=150,
-                 MarketID = markets.Single( s => s.Name == "Norge").MarketID
+                 MarketID = markets.Single( s => s.Name == "Danmark").MarketID
                 },
                 new Product{ProductID=2021,ProductName="Intowords and Reading Pen",Price=150,
                  MarketID = markets.Single( s => s.Name == "Danmark").MarketID
                 },
                 new Product{ProductID=2042,ProductName="Intowords",Price=100,
-                 MarketID = markets.Single( s => s.Name == "Norge").MarketID
+                 MarketID = markets.Single( s => s.Name == "Danmark").MarketID
                 },
            };
 
